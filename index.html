@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ввод кода доступа</title>
+    <title>Ввод кода доступа с подсказками</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,10 +11,29 @@
     <div class="card">
         <h2>Введите 4-значный код</h2>
         <div class="code-container">
-            <input type="text" maxlength="1" class="code-input" autofocus>
-            <input type="text" maxlength="1" class="code-input">
-            <input type="text" maxlength="1" class="code-input">
-            <input type="text" maxlength="1" class="code-input">
+            <!-- Первая цифра -->
+            <div class="input-wrapper">
+                <input type="text" maxlength="1" class="code-input" autofocus>
+                <span class="tooltip">Первая цифра кода</span>
+            </div>
+
+            <!-- Вторая цифра -->
+            <div class="input-wrapper">
+                <input type="text" maxlength="1" class="code-input">
+                <span class="tooltip">Вторая цифра кода</span>
+            </div>
+
+            <!-- Третья цифра -->
+            <div class="input-wrapper">
+                <input type="text" maxlength="1" class="code-input">
+                <span class="tooltip">Третья цифра кода</span>
+            </div>
+
+            <!-- Четвертая цифра -->
+            <div class="input-wrapper">
+                <input type="text" maxlength="1" class="code-input">
+                <span class="tooltip">Последняя цифра</span>
+            </div>
         </div>
         <button id="check-btn">Проверить</button>
         <p id="message"></p>

@@ -1,13 +1,12 @@
-const CORRECT_CODE = "1234"; // Сюда впишите ваш правильный код
+const CORRECT_CODE = "1234"; // Правильный код доступа
 
 const inputs = document.querySelectorAll('.code-input');
 const checkBtn = document.getElementById('check-btn');
 const message = document.getElementById('message');
 
-// 1. Автофокус на следующее поле при вводе цифры
+// 1. Управление фокусом при вводе
 inputs.forEach((input, index) => {
     input.addEventListener('input', (e) => {
-        // Убираем красную ошибку, если пользователь начал вводить заново
         input.classList.remove('error');
 
         if (e.target.value.length === 1 && index < inputs.length - 1) {
@@ -34,22 +33,21 @@ function checkCode() {
     message.className = "";
 
     if (enteredCode === CORRECT_CODE) {
-        // Если код верный
         document.body.classList.add('success-bg');
         message.textContent = "Доступ разрешен! Код верный.";
         message.classList.add('success-text');
     } else {
-        // Если код неверный
         inputs.forEach(input => input.classList.add('error'));
         message.textContent = "Ошибка! Неверный код доступа.";
         message.classList.add('error-text');
     }
 }
 
-// Запуск проверки по клику на кнопку
+// Слушатели событий для отправки формы
 checkBtn.addEventListener('click', checkCode);
 
-// Запуск проверки по нажатию Enter в последнем поле
-inputs[3].addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') checkCode();
+inputs.forEach(input => {
+    input.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') checkCode();
+    });
 });
