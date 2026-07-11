@@ -3,38 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ввод кода доступа с подсказками</title>
+    <title>Ввод кода с кнопками подсказок</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="card">
         <h2>Введите 4-значный код</h2>
+
         <div class="code-container">
-            <!-- Первая цифра -->
-            <div class="input-wrapper">
+            <!-- 1 цифра -->
+            <div class="input-group">
                 <input type="text" maxlength="1" class="code-input" autofocus>
-                <span class="tooltip">Первая цифра кода</span>
+                <button class="hint-btn" type="button">?</button>
             </div>
 
-            <!-- Вторая цифра -->
-            <div class="input-wrapper">
+            <!-- 2 цифра -->
+            <div class="input-group">
                 <input type="text" maxlength="1" class="code-input">
-                <span class="tooltip">Вторая цифра кода</span>
+                <button class="hint-btn" type="button">?</button>
             </div>
 
-            <!-- Третья цифра -->
-            <div class="input-wrapper">
+            <!-- 3 цифра -->
+            <div class="input-group">
                 <input type="text" maxlength="1" class="code-input">
-                <span class="tooltip">Третья цифра кода</span>
+                <button class="hint-btn" type="button">?</button>
             </div>
 
-            <!-- Четвертая цифра -->
-            <div class="input-wrapper">
+            <!-- 4 цифра -->
+            <div class="input-group">
                 <input type="text" maxlength="1" class="code-input">
-                <span class="tooltip">Последняя цифра</span>
+                <button class="hint-btn" type="button">?</button>
             </div>
         </div>
+
+        <!-- Контейнер для отображения текста выбранной подсказки -->
+        <div id="hint-display" class="hint-display">
+            <p class="hint-text">Подсказка 1: Первая цифра — это начало счета.</p>
+            <p class="hint-text">Подсказка 2: Вторая цифра идет сразу за первой.</p>
+            <p class="hint-text">Подсказка 3: Третья цифра — это трио.</p>
+            <p class="hint-text">Подсказка 4: Последняя цифра завершает комбинацию.</p>
+        </div>
+
         <button id="check-btn">Проверить</button>
         <p id="message"></p>
     </div>

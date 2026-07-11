@@ -4,7 +4,32 @@ const inputs = document.querySelectorAll('.code-input');
 const checkBtn = document.getElementById('check-btn');
 const message = document.getElementById('message');
 
-// 1. Управление фокусом при вводе
+const hintButtons = document.querySelectorAll('.hint-btn');
+const hintTexts = document.querySelectorAll('.hint-text');
+const hintDisplay = document.getElementById('hint-display');
+
+// 1. Логика работы кнопок подсказок (исправленная ошибка с classList)
+hintButtons.forEach((btn, index) => {
+    btn.addEventListener('click', () => {
+        const isCurrentActive = btn.classList.contains('active');
+
+        // Сбрасываем активный статус у всех кнопок и текстов
+        hintButtons.forEach(b => b.classList.remove('active'));
+        hintTexts.forEach(t => t.classList.remove('active'));
+
+        if (!isCurrentActive) {
+            // Если кнопка не была активна, активируем её и её текст
+            btn.classList.add('active');
+            hintTexts[index].classList.add('active'); // Ошибка была здесь (исправлено на classList.add)
+            hintDisplay.classList.add('show');
+        } else {
+            // Если кнопка уже была открыта — просто закрываем панель
+            hintDisplay.classList.remove('show');
+        }
+    });
+});
+
+// 2. Управление фокусом при вводе в поля
 inputs.forEach((input, index) => {
     input.addEventListener('input', (e) => {
         input.classList.remove('error');
@@ -14,7 +39,6 @@ inputs.forEach((input, index) => {
         }
     });
 
-    // Шаг назад при нажатии Backspace
     input.addEventListener('keydown', (e) => {
         if (e.key === 'Backspace' && !e.target.value && index > 0) {
             inputs[index - 1].focus();
@@ -22,12 +46,11 @@ inputs.forEach((input, index) => {
     });
 });
 
-// 2. Функция проверки кода
+// 3. Функция проверки кода
 function checkCode() {
     let enteredCode = "";
     inputs.forEach(input => enteredCode += input.value);
 
-    // Сброс предыдущих стилей
     document.body.classList.remove('success-bg');
     inputs.forEach(input => input.classList.remove('error'));
     message.className = "";
@@ -43,7 +66,6 @@ function checkCode() {
     }
 }
 
-// Слушатели событий для отправки формы
 checkBtn.addEventListener('click', checkCode);
 
 inputs.forEach(input => {
