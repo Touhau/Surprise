@@ -1,4 +1,4 @@
-const CORRECT_CODE = "1234"; // Правильный код доступа
+const CORRECT_CODE = "12345678"; // Изменено на 8-значный код
 
 const inputs = document.querySelectorAll('.code-input');
 const checkBtn = document.getElementById('check-btn');
@@ -8,22 +8,19 @@ const hintButtons = document.querySelectorAll('.hint-btn');
 const hintTexts = document.querySelectorAll('.hint-text');
 const hintDisplay = document.getElementById('hint-display');
 
-// 1. Логика работы кнопок подсказок (исправленная ошибка с classList)
+// 1. Логика работы кнопок подсказок
 hintButtons.forEach((btn, index) => {
     btn.addEventListener('click', () => {
         const isCurrentActive = btn.classList.contains('active');
 
-        // Сбрасываем активный статус у всех кнопок и текстов
         hintButtons.forEach(b => b.classList.remove('active'));
         hintTexts.forEach(t => t.classList.remove('active'));
 
         if (!isCurrentActive) {
-            // Если кнопка не была активна, активируем её и её текст
             btn.classList.add('active');
-            hintTexts[index].classList.add('active'); // Ошибка была здесь (исправлено на classList.add)
+            hintTexts[index].classList.add('active');
             hintDisplay.classList.add('show');
         } else {
-            // Если кнопка уже была открыта — просто закрываем панель
             hintDisplay.classList.remove('show');
         }
     });
