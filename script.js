@@ -1,4 +1,4 @@
-const CORRECT_CODE = "12345678"; // Изменено на 8-значный код
+const CORRECT_CODE = "22016960"; // Изменено на 8-значный код
 
 const inputs = document.querySelectorAll('.code-input');
 const checkBtn = document.getElementById('check-btn');
@@ -54,11 +54,11 @@ function checkCode() {
 
     if (enteredCode === CORRECT_CODE) {
         document.body.classList.add('success-bg');
-        message.textContent = "Доступ разрешен! Код верный.";
+        message.textContent = "Поздравляем) Открывай лорец, там подарок лежит";
         message.classList.add('success-text');
     } else {
         inputs.forEach(input => input.classList.add('error'));
-        message.textContent = "Ошибка! Неверный код доступа.";
+        message.textContent = "Не нихуя, такими темпами подарок не получишь";
         message.classList.add('error-text');
     }
 }
