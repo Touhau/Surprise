@@ -54,7 +54,7 @@ function checkCode() {
 
     if (enteredCode === CORRECT_CODE) {
         document.body.classList.add('success-bg');
-        message.textContent = "Поздравляем) Открывай лорец, там подарок лежит";
+        message.textContent = "Поздравляем) Открывай ларец, там подарок лежит";
         message.classList.add('success-text');
     } else {
         inputs.forEach(input => input.classList.add('error'));
